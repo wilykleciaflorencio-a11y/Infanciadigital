@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+  <link rel="stylesheet" href="_ds/broadsheet-96ca6131-09da-41fd-8955-e91ef0ced38d/styles.css">
+  <script src="./image-slot.js"></script>
+  <style>
+    body { margin: 0; }
+    a { color: var(--color-accent-700); }
+    a:hover { color: var(--color-accent-900); }
+    .idg-link { color: inherit; text-decoration: none; }
+    .idg-link:hover { color: var(--color-accent-700); }
+    .idg-chip { cursor: pointer; border: 1px solid var(--color-divider); background: var(--color-bg); font-family: var(--font-body); }
+    .idg-chip:hover { border-color: var(--color-accent); color: var(--color-accent-700); }
+    .idg-chip-active { background: var(--color-accent); color: var(--color-bg) !important; border-color: var(--color-accent); }
+    .idg-select { font: inherit; font-size: 14px; padding: 7px 10px; border-radius: var(--radius-md); border: 1px solid var(--color-divider); background: var(--color-surface); color: var(--color-text); }
+    .idg-carousel-btn { background: color-mix(in srgb, var(--color-bg) 85%, transparent); border: 1px solid var(--color-divider); cursor: pointer; border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; }
+    .idg-carousel-btn:hover { background: var(--color-bg); border-color: var(--color-accent); color: var(--color-accent-700); }
+    .idg-dot { width: 8px; height: 8px; border-radius: 50%; border: none; padding: 0; cursor: pointer; background: var(--color-neutral-400); }
+    .idg-dot-active { background: var(--color-accent); width: 20px; border-radius: 5px; }
+  </style>
+</helmet>
+
+<div style="min-height:100vh;background:var(--color-bg);color:var(--color-text);display:flex;flex-direction:column;">
+
+  <header style="position:sticky;top:0;z-index:40;background:var(--color-bg);border-bottom:1px solid var(--color-divider);">
+    <div class="nav" style="max-width:1240px;margin:0 auto;">
+      <a href="#" onClick="{{ onLogoClick }}" class="idg-link" style="display:flex;align-items:center;gap:var(--space-2);">
+        <image-slot id="logo-header" src="images/logo.jpg" style="width:36px;height:36px;flex:none;" shape="rounded" radius="6" placeholder="Logo"></image-slot>
+        <span class="nav-brand">Infância Digital</span>
+      </a>
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+        <nav style="display:flex;align-items:center;gap:var(--space-4);margin-left:auto;">
+          <a href="#" onClick="{{ onLogoClick }}">Início</a>
+          <a href="#" onClick="{{ onNavSobre }}">Sobre o Guia</a>
+          <a href="#" onClick="{{ onNavTecnologia }}">Tecnologia</a>
+          <a href="#" onClick="{{ onNavCatalogo }}">Catálogo de Jogos</a>
+          <a href="#" onClick="{{ onNavBncc }}">BNCC</a>
+          <a href="#" onClick="{{ onNavComo }}">Como Utilizar</a>
+          <a href="#" onClick="{{ onNavMateriais }}">Materiais</a>
+          <a href="#" onClick="{{ onNavContato }}">Contato</a>
+        </nav>
+      </sc-if>
+      <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+        <button aria-label="Abrir menu" onClick="{{ toggleMobileMenu }}" style="margin-left:auto;background:none;border:none;cursor:pointer;color:var(--color-text);padding:6px;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </sc-if>
+    </div>
+    <sc-if value="{{ showMobileMenu }}" hint-placeholder-val="{{ false }}">
+      <nav style="display:flex;flex-direction:column;padding:var(--space-2) var(--space-4) var(--space-4);gap:var(--space-3);border-top:1px solid var(--color-divider);">
+        <a href="#" onClick="{{ onLogoClick }}">Início</a>
+        <a href="#" onClick="{{ onNavSobre }}">Sobre o Guia</a>
+        <a href="#" onClick="{{ onNavTecnologia }}">Tecnologia</a>
+        <a href="#" onClick="{{ onNavCatalogo }}">Catálogo de Jogos</a>
+        <a href="#" onClick="{{ onNavBncc }}">BNCC</a>
+        <a href="#" onClick="{{ onNavComo }}">Como Utilizar</a>
+        <a href="#" onClick="{{ onNavMateriais }}">Materiais</a>
+        <a href="#" onClick="{{ onNavContato }}">Contato</a>
+      </nav>
+    </sc-if>
+  </header>
+
+  <main style="flex:1;">
+
+    <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+      <div>
+        <!-- HERO -->
+        <section style="max-width:1240px;margin:0 auto;padding:var(--space-8) var(--space-4);display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:var(--space-8);align-items:center;">
+          <div>
+            <div style="font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-2);">Produto Educacional · Mestrado Profissional em Educação — UPE</div>
+            <h1 style="font-size:clamp(32px,5vw,52px);max-width:14ch;">Guia Prático de Jogos Digitais para a Educação Infantil</h1>
+            <p style="font-style:italic;font-size:19px;color:var(--color-accent-700);margin-bottom:var(--space-3);">Aprender brincando, com intencionalidade pedagógica.</p>
+            <p style="font-size:16px;max-width:52ch;color:color-mix(in srgb, var(--color-text) 85%, transparent);">Um guia para professores e famílias escolherem jogos digitais alinhados à BNCC, com orientações claras sobre quando, como e com que mediação usá-los.</p>
+            <div style="display:flex;gap:var(--space-3);margin-top:var(--space-4);flex-wrap:wrap;">
+              <button class="btn btn-primary" onClick="{{ onNavCatalogo }}">Explorar Jogos</button>
+              <button class="btn" onClick="{{ onNavSobre }}" style="background:var(--color-accent-2);color:#fff;border:none;">Conheça o Guia</button>
+              <button class="btn" onClick="{{ onNavMateriais }}" style="background:var(--color-process-yellow);color:#3d2f00;border:none;">Materiais de Apoio</button>
+            </div>
+          </div>
+          <div class="halftone" style="aspect-ratio:4/3;border-radius:var(--radius-lg);">
+            <image-slot id="hero-illustration" style="width:100%;height:100%;" shape="rect" placeholder="Ilustração: crianças usando notebook/tablet acompanhadas por um professor ou responsável" src="images/hero-illustration.jpg"></image-slot>
+          </div>
+        </section>
+
+        <!-- SOBRE O GUIA -->
+        <section id="sobre" style="max-width:1240px;margin:0 auto;padding:var(--space-8) var(--space-4);scroll-margin-top:80px;">
+          <h2>Sobre o Guia</h2>
+          <p style="max-width:70ch;font-size:16px;">Este guia é um produto educacional da dissertação de mestrado profissional em Educação da Universidade de Pernambuco (UPE), de autoria de <strong>Wilyklécia Florêncio Ribeiro da Silva</strong>, sob orientação da Professora Doutora Odaléa Feitosa Vidal, intitulada <em id="referencias">"Infância e Cultura Digital: Experiências Digitais e Mediação na Educação Infantil"</em>. Reúne jogos digitais selecionados e organizados para apoiar decisões pedagógicas, não para substituir o julgamento de quem acompanha a criança.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--space-4);margin-top:var(--space-6);">
+            <div class="card elev-sm">
+              <div class="card-kicker">Catálogo</div>
+              <div class="card-title">Jogos Selecionados</div>
+              <p class="card-body">Um catálogo com jogos analisados quanto ao tema, à faixa etária e ao potencial pedagógico.</p>
+            </div>
+            <div class="card elev-sm">
+              <div class="card-kicker">Currículo</div>
+              <div class="card-title">Alinhamento com a BNCC</div>
+              <p class="card-body">Cada jogo relacionado aos Direitos de Aprendizagem, Campos de Experiência e habilidades da BNCC.</p>
+            </div>
+            <div class="card elev-sm">
+              <div class="card-kicker">Sala de aula</div>
+              <div class="card-title">Para Professores</div>
+              <p class="card-body">Sugestões de uso em sala, do planejamento à atividade que continua depois da tela.</p>
+            </div>
+            <div class="card elev-sm">
+              <div class="card-kicker">Em casa</div>
+              <div class="card-title">Para Famílias</div>
+              <p class="card-body">Orientações práticas para acompanhar, conversar e definir tempo de tela com tranquilidade.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- TECNOLOGIA -->
+        <section id="tecnologia" style="max-width:1240px;margin:0 auto;padding:var(--space-8) var(--space-4);scroll-margin-top:80px;">
+          <h2>Tecnologia e Desenvolvimento Infantil</h2>
+          <p style="max-width:72ch;font-size:16px;">As crianças de hoje nascem em contato com telas, a questão não é se vão usá-las, mas como. Usada com intencionalidade, mediação e tempo definido, a tecnologia pode apoiar a linguagem, o raciocínio e a convivência. A pesquisa que originou este guia identificou o <strong>Roblox</strong> como um achado central: mais do que um jogo, um espaço onde crianças socializam, negociam regras e constroem linguagem entre si, desde que um adulto acompanhe de perto.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--space-4);margin:var(--space-6) 0;">
+            <div class="card elev-sm">
+              <div class="card-title">Desenvolvimento Cognitivo</div>
+              <p class="card-body">Jogos bem escolhidos estimulam atenção, memória, raciocínio lógico e resolução de problemas.</p>
+            </div>
+            <div class="card elev-sm">
+              <div class="card-title">Interação Social</div>
+              <p class="card-body">Espaços como o Roblox favorecem negociação, cooperação e construção coletiva de linguagem entre crianças.</p>
+            </div>
+            <div class="card elev-sm">
+              <div class="card-title">Criatividade e Exploração</div>
+              <p class="card-body">Ambientes de construção e desenho abrem espaço para expressão própria e experimentação livre.</p>
+            </div>
+          </div>
+          <div style="background:var(--color-accent-2-100);color:var(--color-accent-2-800);border-radius:var(--radius-lg);padding:var(--space-4);max-width:80ch;">
+            <strong>Importante:</strong> jogos digitais são um complemento, nunca um substituto. Brincadeiras livres, atividades ao ar livre, leitura e a interação social seguem sendo insubstituíveis no desenvolvimento infantil.
+          </div>
+        </section>
+
+        <!-- BNCC -->
+        <section id="bncc" style="max-width:1240px;margin:0 auto;padding:var(--space-8) var(--space-4);scroll-margin-top:80px;">
+          <h2>BNCC: como este guia se conecta ao currículo</h2>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--space-6);max-width:1100px;">
+            <div>
+              <h4>Direitos de Aprendizagem</h4>
+              <p class="card-body" style="font-size:14px;">Conviver, brincar, participar, explorar, expressar e conhecer-se descrevem experiências que toda criança deve viver na Educação Infantil. Cada jogo do catálogo é relacionado aos direitos que mobiliza.</p>
+            </div>
+            <div>
+              <h4>Campos de Experiência</h4>
+              <p class="card-body" style="font-size:14px;">Organizam os saberes e fazeres da Educação Infantil em cinco eixos, como "O eu, o outro e o nós" e "Escuta, fala, pensamento e imaginação". Aparecem na ficha do jogo quando identificados.</p>
+            </div>
+            <div>
+              <h4>Códigos de habilidade</h4>
+              <p class="card-body" style="font-size:14px;">Códigos como <strong>EI03EF01</strong> identificam habilidades específicas: EI é Educação Infantil, 03 a faixa etária, e o restante indica o campo e a habilidade. Toque em um código na ficha do jogo para ver a descrição completa.</p>
+            </div>
+            <div>
+              <h4>No planejamento</h4>
+              <p class="card-body" style="font-size:14px;">Use os filtros do catálogo para localizar jogos por habilidade, campo ou faixa etária, e inclua-os na rotina como parte intencional do planejamento — nunca como preenchimento de tempo.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- COMO UTILIZAR -->
+        <section id="como-utilizar" style="max-width:1240px;margin:0 auto;padding:var(--space-8) var(--space-4);scroll-margin-top:80px;">
+          <h2>Como Utilizar Este Guia</h2>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--space-6);margin-top:var(--space-4);">
+            <div>
+              <h4 style="color:var(--color-accent-700);">Para professores</h4>
+              <ol style="padding-left:1.1em;font-size:15px;display:flex;flex-direction:column;gap:var(--space-2);">
+                <li>Definir o objetivo da aula</li>
+                <li>Escolher um jogo relacionado ao conteúdo</li>
+                <li>Mediar durante o uso</li>
+                <li>Propor uma atividade prática depois</li>
+                <li>Avaliar as aprendizagens observadas</li>
+              </ol>
+            </div>
+            <div>
+              <h4 style="color:var(--color-accent-2-700);">Para famílias</h4>
+              <ol style="padding-left:1.1em;font-size:15px;display:flex;flex-direction:column;gap:var(--space-2);">
+                <li>Escolher um momento tranquilo</li>
+                <li>Brincar junto</li>
+                <li>Conversar sobre o jogo</li>
+                <li>Definir um tempo adequado</li>
+                <li>Continuar a brincadeira fora das telas</li>
+              </ol>
+            </div>
+          </div>
+        </section>
+
+        <!-- MATERIAIS -->
+        <section id="materiais" style="max-width:1240px;margin:0 auto;padding:var(--space-8) var(--space-4);scroll-margin-top:80px;">
+          <h2>Materiais de Apoio</h2>
+          <p style="max-width:70ch;">Recursos complementares para professores e famílias.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--space-4);margin-top:var(--space-4);">
+            <div class="card elev-sm" style="background:var(--color-accent-100);">
+              <div class="card-title" style="color:var(--color-accent-800);">Ficha de Observação do Uso de Telas</div>
+              <p class="card-body">Registro simples para acompanhar como a criança usa cada jogo.</p>
+              <a href="#" class="btn btn-secondary" onClick="{{ onNavFicha }}">Saiba mais</a>
+            </div>
+            <div class="card elev-sm" style="background:var(--color-accent-2-100);">
+              <div class="card-title" style="color:var(--color-accent-2-800);">Combinado de Telas para a Sala</div>
+              <p class="card-body">Cartaz com regras simples para combinar o uso de jogos digitais com a turma.</p>
+              <button class="btn btn-secondary" disabled="">Em breve</button>
+            </div>
+            <div class="card elev-sm" style="background:#e8f5e9;">
+              <div class="card-title" style="color:#2e6b32;">Indicações de Vídeos</div>
+              <p class="card-body">Seleção de vídeos para aprofundar o tema do uso de telas na Educação Infantil.</p>
+              <a href="#" class="btn btn-secondary" onClick="{{ onNavVideos }}">Saiba mais</a>
+            </div>
+            <div class="card elev-sm" style="background:#f3e8fd;">
+              <div class="card-title" style="color:#6a3fa0;">Leituras Importantes</div>
+              <p class="card-body">Artigos e textos recomendados para professores e famílias sobre tecnologia e infância.</p>
+              <a href="#" class="btn btn-secondary" onClick="{{ onNavLeituras }}">Saiba mais</a>
+            </div>
+            <div class="card elev-sm" style="background:#fff2e0;">
+              <div class="card-title" style="color:#a35b00;">ECA Digital</div>
+              <p class="card-body">Saiba mais sobre a legislação que protege crianças e adolescentes no ambiente digital.</p>
+              <a href="#" class="btn btn-secondary" onClick="{{ onNavEcaDigital }}">Saiba mais</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isCatalogo }}" hint-placeholder-val="{{ false }}">
+      <section style="max-width:1240px;margin:0 auto;padding:var(--space-8) var(--space-4);">
+        <h1>Catálogo de Jogos</h1>
+        <p style="max-width:70ch;">Busque por nome ou combine filtros de faixa etária, campo de experiência e plataforma.</p>
+
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-2);margin:var(--space-4) 0;">
+          <sc-for list="{{ filterTags }}" as="tag" hint-placeholder-count="10">
+            <button class="idg-chip {{ tag.activeClass }}" onClick="{{ tag.onClick }}" style="border-radius:999px;padding:6px 14px;font-size:13px;">{{ tag.label }}</button>
+          </sc-for>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:var(--space-3);flex-wrap:wrap;margin-bottom:var(--space-4);">
+          <input class="input" style="max-width:280px;" type="text" placeholder="Buscar jogo pelo nome…" value="{{ search }}" onChange="{{ onSearchChange }}" aria-label="Buscar jogo">
+          <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+            <button class="btn btn-secondary" onClick="{{ toggleMobileFilters }}">Filtros</button>
+          </sc-if>
+          <span class="text-muted" style="font-size:13px;">{{ resultsLabel }}</span>
+          <sc-if value="{{ hasActiveFilters }}" hint-placeholder-val="{{ false }}">
+            <button class="btn btn-ghost" onClick="{{ clearFilters }}">Limpar filtros</button>
+          </sc-if>
+        </div>
+
+        <sc-if value="{{ showDesktopFilterPanel }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;gap:var(--space-4);flex-wrap:wrap;margin-bottom:var(--space-6);padding-bottom:var(--space-4);border-bottom:1px solid var(--color-divider);">
+            <div class="field"><label>Faixa etária</label>
+              <select class="idg-select" value="{{ filterFaixa }}" onChange="{{ onFaixaChange }}">
+                <option value="">Todas</option>
+                <sc-for list="{{ faixaOptions }}" as="opt" hint-placeholder-count="2"><option value="{{ opt }}">{{ opt }}</option></sc-for>
+              </select>
+            </div>
+            <div class="field"><label>Campo de experiência</label>
+              <select class="idg-select" value="{{ filterCampo }}" onChange="{{ onCampoChange }}">
+                <option value="">Todos</option>
+                <sc-for list="{{ campoOptions }}" as="opt" hint-placeholder-count="2"><option value="{{ opt }}">{{ opt }}</option></sc-for>
+              </select>
+            </div>
+            <div class="field"><label>Plataforma</label>
+              <div class="seg">
+                <sc-for list="{{ platformOptions }}" as="p" hint-placeholder-count="3">
+                  <label class="seg-opt"><input type="radio" name="plataforma" checked="{{ p.checked }}" onChange="{{ p.onSelect }}">{{ p.label }}</label>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ showMobileFilterDrawer }}" hint-placeholder-val="{{ false }}">
+          <div style="position:fixed;inset:0;background:color-mix(in srgb, var(--color-neutral-900) 45%, transparent);z-index:60;display:flex;align-items:flex-end;" onClick="{{ toggleMobileFilters }}">
+            <div style="background:var(--color-bg);width:100%;max-height:80vh;overflow:auto;border-radius:var(--radius-lg) var(--radius-lg) 0 0;padding:var(--space-4);display:flex;flex-direction:column;gap:var(--space-4);" onClick="{{ stopClick }}">
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <h4 style="margin:0;">Filtros</h4>
+                <button class="btn-icon btn-ghost" onClick="{{ toggleMobileFilters }}" aria-label="Fechar filtros">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="4" x2="20" y2="20"></line><line x1="20" y1="4" x2="4" y2="20"></line></svg>
+                </button>
+              </div>
+              <div class="field"><label>Faixa etária</label>
+                <select class="idg-select" style="width:100%;" value="{{ filterFaixa }}" onChange="{{ onFaixaChange }}">
+                  <option value="">Todas</option>
+                  <sc-for list="{{ faixaOptions }}" as="opt" hint-placeholder-count="2"><option value="{{ opt }}">{{ opt }}</option></sc-for>
+                </select>
+              </div>
+              <div class="field"><label>Campo de experiência</label>
+                <select class="idg-select" style="width:100%;" value="{{ filterCampo }}" onChange="{{ onCampoChange }}">
+                  <option value="">Todos</option>
+                  <sc-for list="{{ campoOptions }}" as="opt" hint-placeholder-count="2"><option value="{{ opt }}">{{ opt }}</option></sc-for>
+                </select>
+              </div>
+              <div class="field"><label>Plataforma</label>
+                <div class="seg" style="width:100%;">
+                  <sc-for list="{{ platformOptions }}" as="p" hint-placeholder-count="3">
+                    <label class="seg-opt" style="flex:1;justify-content:center;"><input type="radio" name="plataforma-m" checked="{{ p.checked }}" onChange="{{ p.onSelect }}">{{ p.label }}</label>
+                  </sc-for>
+                </div>
+              </div>
+              <button class="btn btn-primary btn-block" onClick="{{ toggleMobileFilters }}">Ver {{ resultsCount }} resultados</button>
+            </div>
+          </div>
+        </sc-if>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:var(--space-5);">
+          <sc-for list="{{ filteredGames }}" as="game" hint-placeholder-count="6">
+            <div class="card elev-sm" style="padding:0;overflow:hidden;">
+              <div class="halftone" style="aspect-ratio:4/3;">
+                <image-slot id="cover-{{ game.id }}" src="{{ game.coverSrc }}" style="width:100%;height:100%;" shape="rect" fit="contain" placeholder="Imagem do jogo: {{ game.nome }}"></image-slot>
+              </div>
+              <div style="padding:var(--space-3);display:flex;flex-direction:column;gap:6px;">
+                <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                  <span class="tag tag-accent">{{ game.plataforma }}</span>
+                  <sc-if value="{{ game.showIncomplete }}" hint-placeholder-val="{{ false }}">
+                    <span class="tag tag-accent-2">Informações em breve</span>
+                  </sc-if>
+                </div>
+                <div class="card-title">{{ game.nome }}</div>
+                <p class="card-body" style="-webkit-line-clamp:2;-webkit-box-orient:vertical;display:-webkit-box;overflow:hidden;">{{ game.tema }}</p>
+                <div class="card-meta">{{ game.faixaLabel }}</div>
+                <button class="btn btn-secondary btn-block" onClick="{{ game.onOpen }}">Ver detalhes</button>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+
+        <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+          <p class="text-muted" style="padding:var(--space-6) 0;">Nenhum jogo encontrado com esses filtros. <a href="#" onClick="{{ clearFilters }}">Limpar filtros</a>.</p>
+        </sc-if>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isJogo }}" hint-placeholder-val="{{ false }}">
+      <section style="max-width:900px;margin:0 auto;padding:var(--space-6) var(--space-4) var(--space-8);">
+        <a href="#" onClick="{{ onNavCatalogo }}" style="display:inline-block;margin-bottom:var(--space-4);">← Voltar ao catálogo</a>
+
+        <sc-if value="{{ selectedGame.showIncomplete }}" hint-placeholder-val="{{ false }}">
+          <div style="background:var(--color-accent-2-100);color:var(--color-accent-2-800);border-radius:var(--radius-md);padding:var(--space-3);margin-bottom:var(--space-4);font-size:14px;">Ficha em preparação — em breve traremos as informações completas sobre este jogo.</div>
+        </sc-if>
+
+        <div style="position:relative;" tabIndex="0" onKeyDown="{{ onCarouselKeyDown }}" onTouchStart="{{ onTouchStart }}" onTouchMove="{{ onTouchMove }}" onTouchEnd="{{ onTouchEnd }}" aria-roledescription="carrossel" aria-label="Galeria de imagens do jogo">
+          <div class="halftone" style="aspect-ratio:16/9;border-radius:var(--radius-lg);">
+            <sc-for list="{{ carouselSlides }}" as="slide" hint-placeholder-count="1">
+              <sc-if value="{{ slide.active }}" hint-placeholder-val="{{ true }}">
+                <image-slot id="{{ slide.slotId }}" src="{{ slide.src }}" style="width:100%;height:100%;" shape="rect" fit="contain" placeholder="{{ slide.placeholder }}"></image-slot>
+              </sc-if>
+            </sc-for>
+          </div>
+          <sc-if value="{{ showCarouselArrows }}" hint-placeholder-val="{{ false }}">
+            <button class="idg-carousel-btn" onClick="{{ prevImage }}" aria-label="Imagem anterior" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <button class="idg-carousel-btn" onClick="{{ nextImage }}" aria-label="Próxima imagem" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </sc-if>
+        </div>
+        <sc-if value="{{ showCarouselArrows }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;justify-content:center;gap:6px;margin-top:var(--space-2);">
+            <sc-for list="{{ carouselSlides }}" as="slide" hint-placeholder-count="1">
+              <button class="idg-dot {{ slide.dotClass }}" onClick="{{ slide.onSelect }}" aria-label="Ir para imagem {{ slide.n }}"></button>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <div style="margin-top:var(--space-6);">
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:var(--space-2);">
+            <span class="tag tag-accent">{{ selectedGame.plataforma }}</span>
+            <span class="tag tag-neutral">{{ selectedGame.faixaLabel }}</span>
+          </div>
+          <h1>{{ selectedGame.nome }}</h1>
+          <p style="font-style:italic;color:var(--color-accent-700);">{{ selectedGame.tema }}</p>
+          <p style="font-size:16px;max-width:70ch;">{{ selectedGame.descricaoLabel }}</p>
+          <sc-if value="{{ selectedGame.link }}" hint-placeholder-val="{{ false }}">
+            <a class="btn btn-primary" href="{{ selectedGame.link }}" target="_blank" rel="noopener">Acessar jogo</a>
+          </sc-if>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--space-6);margin-top:var(--space-6);">
+          <div>
+            <h4>Direitos de Aprendizagem</h4>
+            <sc-if value="{{ selectedGame.hasDireitos }}" hint-placeholder-val="{{ false }}">
+              <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px;">
+                <sc-for list="{{ selectedGame.direitosDeAprendizagem }}" as="item" hint-placeholder-count="2">
+                  <li style="display:flex;gap:8px;align-items:flex-start;font-size:14px;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--color-accent);flex:none;margin-top:2px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    {{ item }}
+                  </li>
+                </sc-for>
+              </ul>
+            </sc-if>
+            <sc-if value="{{ selectedGame.noDireitos }}" hint-placeholder-val="{{ false }}"><span class="text-muted">Em breve</span></sc-if>
+          </div>
+          <div>
+            <h4>Campos de Experiência</h4>
+            <sc-if value="{{ selectedGame.hasCampos }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                <sc-for list="{{ selectedGame.camposDeExperiencia }}" as="item" hint-placeholder-count="2">
+                  <span class="tag tag-neutral">{{ item }}</span>
+                </sc-for>
+              </div>
+            </sc-if>
+            <sc-if value="{{ selectedGame.noCampos }}" hint-placeholder-val="{{ true }}"><span class="text-muted">Em breve</span></sc-if>
+          </div>
+        </div>
+
+        <div style="margin-top:var(--space-6);">
+          <h4>Habilidades da BNCC</h4>
+          <sc-if value="{{ selectedGame.hasBncc }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <sc-for list="{{ selectedGame.bnccChips }}" as="chip" hint-placeholder-count="2">
+                <div style="display:flex;flex-direction:column;gap:6px;">
+                  <button class="tag {{ chip.tagClass }}" onClick="{{ chip.onToggle }}" style="cursor:pointer;border:1px solid var(--color-accent);font-family:var(--font-heading);" aria-expanded="{{ chip.expanded }}">{{ chip.codigo }}</button>
+                  <sc-if value="{{ chip.expanded }}" hint-placeholder-val="{{ false }}">
+                    <div style="max-width:280px;font-size:13px;background:var(--color-surface);border-radius:var(--radius-md);padding:var(--space-2) var(--space-3);">{{ chip.descricao }}</div>
+                  </sc-if>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ selectedGame.noBncc }}" hint-placeholder-val="{{ true }}"><span class="text-muted">Habilidades BNCC em breve</span></sc-if>
+        </div>
+
+        <div style="margin-top:var(--space-6);">
+          <h4>O que a criança desenvolve</h4>
+          <sc-if value="{{ selectedGame.hasDesenvolve }}" hint-placeholder-val="{{ false }}">
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px;">
+              <sc-for list="{{ selectedGame.oQueDesenvolve }}" as="item" hint-placeholder-count="2">
+                <li style="display:flex;gap:8px;align-items:flex-start;font-size:14px;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--color-accent-2);flex:none;margin-top:2px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  {{ item }}
+                </li>
+              </sc-for>
+            </ul>
+          </sc-if>
+          <sc-if value="{{ selectedGame.noDesenvolve }}" hint-placeholder-val="{{ true }}"><span class="text-muted">Em breve</span></sc-if>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--space-6);margin-top:var(--space-6);">
+          <div>
+            <h4 style="color:var(--color-accent-700);">Como utilizar — Professor</h4>
+            <p style="font-size:14px;">{{ selectedGame.professorLabel }}</p>
+          </div>
+          <div>
+            <h4 style="color:var(--color-accent-2-700);">Como utilizar — Família</h4>
+            <p style="font-size:14px;">{{ selectedGame.familiaLabel }}</p>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--space-6);margin-top:var(--space-6);padding-top:var(--space-6);border-top:1px solid var(--color-divider);">
+          <div>
+            <h4>Depois do jogo</h4>
+            <p style="font-size:14px;">{{ selectedGame.atividadeLabel }}</p>
+          </div>
+          <div>
+            <h4>Tempo recomendado</h4>
+            <p style="font-size:14px;">{{ selectedGame.tempoLabel }}</p>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isFicha }}" hint-placeholder-val="{{ false }}">
+      <section style="max-width:900px;margin:0 auto;padding:var(--space-6) var(--space-4) var(--space-8);">
+        <a href="#" onClick="{{ onNavMateriais }}" style="display:inline-block;margin-bottom:var(--space-4);">← Voltar aos Materiais</a>
+
+        <h1>Ficha de Observação do Uso de Telas</h1>
+        <p style="max-width:70ch;font-size:16px;">Registro para acompanhar como a criança usa cada jogo ou conteúdo digital, pensado para o uso contínuo por professores ao longo da rotina escolar.</p>
+
+        <div class="card elev-sm" style="padding:0;overflow:hidden;margin-top:var(--space-6);max-width:520px;">
+          <img src="materiais/ficha-observacao-preview.png" alt="Prévia da Ficha de Observação do Uso de Telas e Jogos Digitais" style="width:100%;display:block;border-bottom:1px solid var(--color-divider);">
+          <div style="padding:var(--space-4);">
+            <a class="btn btn-primary btn-block" href="materiais/ficha-observacao-uso-de-telas.pdf" target="_blank" rel="noopener">Baixar ficha em PDF</a>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isVideos }}" hint-placeholder-val="{{ false }}">
+      <section style="max-width:900px;margin:0 auto;padding:var(--space-6) var(--space-4) var(--space-8);">
+        <a href="#" onClick="{{ onNavMateriais }}" style="display:inline-block;margin-bottom:var(--space-4);">← Voltar aos Materiais</a>
+
+        <h1>Indicações de Vídeos</h1>
+        <p style="max-width:70ch;font-size:16px;">Seleção de vídeos para aprofundar o tema do uso de telas e tecnologias na Educação Infantil.</p>
+
+        <div style="display:flex;flex-direction:column;gap:var(--space-4);margin-top:var(--space-6);">
+          <div class="card elev-sm" style="padding:0;overflow:hidden;display:flex;flex-wrap:wrap;background:var(--color-accent-100);">
+            <div class="halftone" style="width:220px;flex:none;aspect-ratio:16/9;">
+              <img src="https://i.ytimg.com/vi/sYJCFiWXAXE/hqdefault.jpg" alt="Capa do vídeo: BNCC e a Cultura Digital na Educação Infantil - DICA #1" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+            <div style="padding:var(--space-4);flex:1;min-width:220px;">
+              <div class="card-title" style="color:var(--color-accent-800);">BNCC e a Cultura Digital na Educação Infantil — DICA #1</div>
+              <p class="card-body">Vídeo do canal Reggi Resultados Educacionais que apresenta, de forma rápida e prática, como a cultura digital se relaciona com a BNCC na Educação Infantil.</p>
+              <a class="btn" href="https://youtu.be/sYJCFiWXAXE" target="_blank" rel="noopener" style="background:var(--color-accent);color:#fff;border:none;">Assistir no YouTube</a>
+            </div>
+          </div>
+          <div class="card elev-sm" style="padding:0;overflow:hidden;display:flex;flex-wrap:wrap;background:var(--color-accent-2-100);">
+            <div class="halftone" style="width:220px;flex:none;aspect-ratio:16/9;">
+              <img src="https://i.ytimg.com/vi/C75E9eLk70U/hqdefault.jpg" alt="Capa do vídeo: BNCC Computação - Eixo Pensamento Computacional" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+            <div style="padding:var(--space-4);flex:1;min-width:220px;">
+              <div class="card-title" style="color:var(--color-accent-2-800);">BNCC Computação — Eixo Pensamento Computacional</div>
+              <p class="card-body">Vídeo do canal Pensamento Computacional que explica o eixo de Pensamento Computacional da BNCC e como ele se relaciona com a prática pedagógica.</p>
+              <a class="btn" href="https://youtu.be/C75E9eLk70U" target="_blank" rel="noopener" style="background:var(--color-accent-2);color:#fff;border:none;">Assistir no YouTube</a>
+            </div>
+          </div>
+          <div class="card elev-sm" style="padding:0;overflow:hidden;display:flex;flex-wrap:wrap;background:#e8f5e9;">
+            <div class="halftone" style="width:220px;flex:none;aspect-ratio:16/9;">
+              <img src="https://i.ytimg.com/vi/pCMSwEpgBsU/hqdefault.jpg" alt="Capa do vídeo: Cultura digital e currículo da educação infantil" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+            <div style="padding:var(--space-4);flex:1;min-width:220px;">
+              <div class="card-title" style="color:#2e6b32;">Cultura Digital e Currículo da Educação Infantil</div>
+              <p class="card-body">Vídeo do canal Conviva Educação sobre como a cultura digital se relaciona com o currículo da Educação Infantil.</p>
+              <a class="btn" href="https://www.youtube.com/live/pCMSwEpgBsU" target="_blank" rel="noopener" style="background:#2e6b32;color:#fff;border:none;">Assistir no YouTube</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isLeituras }}" hint-placeholder-val="{{ false }}">
+      <section style="max-width:900px;margin:0 auto;padding:var(--space-6) var(--space-4) var(--space-8);">
+        <a href="#" onClick="{{ onNavMateriais }}" style="display:inline-block;margin-bottom:var(--space-4);">← Voltar aos Materiais</a>
+
+        <h1>Leituras Importantes</h1>
+        <p style="max-width:70ch;font-size:16px;">Artigos e textos recomendados para professores e famílias sobre tecnologia e infância na Educação Infantil.</p>
+
+        <div style="display:flex;flex-direction:column;gap:var(--space-3);margin-top:var(--space-6);">
+          <div class="card elev-sm" style="background:var(--color-accent-100);">
+            <div class="card-title" style="color:var(--color-accent-800);">Uso Saudável de Telas e Tecnologias</div>
+            <p class="card-body">Documento científico da Sociedade Brasileira de Pediatria (SBP) com recomendações atualizadas sobre o uso de telas por crianças e adolescentes.</p>
+            <a class="btn btn-secondary btn-block" href="https://docs.google.com/viewer?url=https%3A%2F%2Fwww.sbp.com.br%2F%3Facervo_download%3D1%26post_id%3D58174%26nonce%3Dc73bbc6d68&amp;embedded=true" target="_blank" rel="noopener">Abrir documento</a>
+          </div>
+          <div class="card elev-sm" style="background:var(--color-accent-2-100);">
+            <div class="card-title" style="color:var(--color-accent-2-800);">Produto Educacional — E-book</div>
+            <p class="card-body">E-book produzido por Nayara e Moema como material de apoio complementar sobre tecnologias digitais na Educação Infantil.</p>
+            <a class="btn btn-secondary btn-block" href="https://drive.google.com/file/d/1EFHUAh-ejCgNr3_SbPyt1_xEmN6kFukv/view?usp=sharing" target="_blank" rel="noopener">Abrir e-book</a>
+          </div>
+          <div class="card elev-sm" style="background:#e8f5e9;">
+            <div class="card-title" style="color:#2e6b32;">Tecnologias Digitais na Educação Infantil</div>
+            <p class="card-body">Produto educacional sobre formação em tecnologias digitais na Educação Infantil, publicado no repositório EDUCAPES/CAPES.</p>
+            <a class="btn btn-secondary btn-block" href="https://educapes.capes.gov.br/bitstream/capes/559891/2/PRODUTOEDUCACIONAL_Tecnologias_Digitais_Educa%C3%A7%C3%A3o_Infantil_Forma%C3%A7%C3%A3o.pdf" target="_blank" rel="noopener">Abrir documento</a>
+          </div>
+          <div class="card elev-sm" style="background:#f3e8fd;">
+            <div class="card-title" style="color:#6a3fa0;">Tecnologias Digitais e Educação: entre a Inovação e a Prática</div>
+            <p class="card-body">Produto educacional sobre o uso de tecnologias digitais na prática pedagógica, publicado no repositório EDUCAPES/CAPES.</p>
+            <a class="btn btn-secondary btn-block" href="https://educapes.capes.gov.br/bitstream/capes/1081127/2/TECNOLOGIAS%20DIGITAIS%20E%20EDUCA%C3%87%C3%83O%20ENTRE%20A%20INOVA%C3%87%C3%83O%20E%20A%20PR%C3%81TICA.pdf" target="_blank" rel="noopener">Abrir documento</a>
+          </div>
+          <div class="card elev-sm" style="background:#fff2e0;">
+            <div class="card-title" style="color:#a35b00;">Curadoria dos Livros sobre Tecnologias Digitais</div>
+            <p class="card-body">Seleção de livros e referências sobre tecnologias digitais para apoiar professores e famílias.</p>
+            <a class="btn btn-secondary btn-block" href="https://drive.google.com/file/d/1D5naM9G2UKNi-kyDSjTgeV0ySFD2fvIN/view?usp=sharing" target="_blank" rel="noopener">Abrir documento</a>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isEcaDigital }}" hint-placeholder-val="{{ false }}">
+      <section style="max-width:900px;margin:0 auto;padding:var(--space-6) var(--space-4) var(--space-8);">
+        <a href="#" onClick="{{ onNavMateriais }}" style="display:inline-block;margin-bottom:var(--space-4);">← Voltar aos Materiais</a>
+
+        <h1>ECA Digital</h1>
+        <p style="max-width:70ch;font-size:16px;">O ECA Digital (Lei nº 15.211/25) atualiza a proteção de crianças e adolescentes diante dos desafios tecnológicos e do ambiente digital. É um marco jurídico que reforça o melhor interesse da criança e do adolescente no ambiente on-line.</p>
+
+        <div style="background:#fff2e0;color:#a35b00;border-radius:var(--radius-md);padding:var(--space-3) var(--space-4);margin-top:var(--space-4);font-size:14px;max-width:70ch;">
+          <strong>Em vigor desde 17 de março de 2026</strong>, seis meses após a publicação da lei.
+        </div>
+
+        <h2 style="margin-top:var(--space-8);">Responsabilidade compartilhada</h2>
+        <p style="max-width:70ch;">A proteção das crianças e adolescentes online é dividida entre quatro frentes:</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:var(--space-3);margin-top:var(--space-4);">
+          <div class="card elev-sm" style="background:var(--color-accent-100);">
+            <div class="card-title" style="color:var(--color-accent-800);font-size:16px;">Família</div>
+          </div>
+          <div class="card elev-sm" style="background:var(--color-accent-2-100);">
+            <div class="card-title" style="color:var(--color-accent-2-800);font-size:16px;">Sociedade</div>
+          </div>
+          <div class="card elev-sm" style="background:#e8f5e9;">
+            <div class="card-title" style="color:#2e6b32;font-size:16px;">Estado</div>
+          </div>
+          <div class="card elev-sm" style="background:#f3e8fd;">
+            <div class="card-title" style="color:#6a3fa0;font-size:16px;">Plataformas digitais</div>
+          </div>
+        </div>
+
+        <h2 style="margin-top:var(--space-8);">Principais medidas práticas</h2>
+        <div style="display:flex;flex-direction:column;gap:var(--space-3);margin-top:var(--space-4);">
+          <div class="card elev-sm" style="background:var(--color-accent-100);">
+            <div class="card-title" style="color:var(--color-accent-800);">Aferição de idade</div>
+            <p class="card-body">Elimina a autodeclaração simples e passa a exigir verificação real para produtos proibidos a menores, como bebidas alcoólicas, cigarros, apostas e conteúdo adulto.</p>
+          </div>
+          <div class="card elev-sm" style="background:var(--color-accent-2-100);">
+            <div class="card-title" style="color:var(--color-accent-2-800);">Segurança por padrão</div>
+            <p class="card-body">As plataformas devem integrar proteção, prevenção de violências e privacidade já na concepção dos produtos.</p>
+          </div>
+          <div class="card elev-sm" style="background:#e8f5e9;">
+            <div class="card-title" style="color:#2e6b32;">Supervisão parental</div>
+            <p class="card-body">Ferramentas de monitoramento familiar devem ser acessíveis, claras e gratuitas.</p>
+          </div>
+          <div class="card elev-sm" style="background:#f3e8fd;">
+            <div class="card-title" style="color:#6a3fa0;">Proteção publicitária</div>
+            <p class="card-body">Proíbe a coleta excessiva de dados e o rastreamento comportamental de menores, além de vedar a monetização de conteúdo erotizante infantil.</p>
+          </div>
+          <div class="card elev-sm" style="background:#fff2e0;">
+            <div class="card-title" style="color:#a35b00;">Moderação de conteúdo</div>
+            <p class="card-body">Exige mecanismos de denúncia rápida de exploração, abuso e aliciamento.</p>
+          </div>
+        </div>
+
+        <h2 style="margin-top:var(--space-8);">Onde se aplica</h2>
+        <p style="max-width:70ch;">A lei vale para qualquer produto ou serviço de tecnologia da informação direcionado a crianças e adolescentes ou que possa ser acessado por eles, independentemente de onde a empresa esteja sediada, incluindo redes sociais, jogos, aplicativos, lojas de aplicativos e plataformas de vídeo.</p>
+
+        <a class="btn btn-primary" href="https://www.gov.br/mj/pt-br/assuntos/sua-protecao/sedigi/eca-digital/eca-digital-1" target="_blank" rel="noopener" style="margin-top:var(--space-6);display:inline-block;">Ler no site oficial (gov.br)</a>
+      </section>
+    </sc-if>
+
+  </main>
+
+  <footer id="contato" style="border-top:1px solid var(--color-divider);margin-top:var(--space-8);scroll-margin-top:80px;">
+    <div style="max-width:1240px;margin:0 auto;padding:var(--space-8) var(--space-4);display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--space-6);">
+      <div>
+        <div style="display:flex;align-items:center;gap:var(--space-2);margin-bottom:var(--space-2);">
+          <image-slot id="logo-footer" src="images/logo.jpg" style="width:32px;height:32px;flex:none;" shape="rounded" radius="6" placeholder="Logo"></image-slot>
+          <span class="nav-brand" style="font-size:16px;">Infância Digital</span>
+        </div>
+        <p class="text-muted" style="font-size:13px;max-width:36ch;">Guia prático para o uso pedagógico, seguro e mediado de jogos digitais na Educação Infantil.</p>
+      </div>
+      <div style="font-size:13px;">
+        <p class="text-muted" style="margin:0 0 4px;">Produto Educacional, Programa de Pós-Graduação em Educação, Universidade de Pernambuco (UPE)</p>
+        <p class="text-muted" style="margin:0 0 4px;">"Infância e Cultura Digital: Experiências Digitais e Mediação na Educação Infantil"</p>
+        <p class="text-muted" style="margin:0 0 4px;">Wilyklécia Florêncio Ribeiro da Silva</p>
+        <a href="mailto:wilyklecia.florencio@upe.br">wilyklecia.florencio@upe.br</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;font-size:13px;">
+        <a href="#" onClick="{{ onNavSobre }}">Sobre</a>
+        <a href="#" onClick="{{ onNavCatalogo }}">Jogos</a>
+        <a href="#" onClick="{{ onNavBncc }}">BNCC</a>
+        <a href="#sobre" onClick="{{ onNavSobre }}">Referências</a>
+        <a href="#contato">Contato</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+
+class Component extends DCLogic {
+  state = {
+    games: [], bncc: [], filterTagsData: [], platforms: [],
+    dataLoaded: false,
+    route: 'home', gameId: null,
+    isMobile: false, showMobileMenu: false, showMobileFilterDrawer: false,
+    search: '', filterFaixa: '', filterCampo: '', filterPlataforma: '',
+    activeTag: '', expandedChip: null, carouselIndex: 0
+  };
+
+  componentDidMount() {
+    import('./games-data.js').then(m => {
+      this.setState({ games: m.games, bncc: m.bnccHabilidades, filterTagsData: m.filterTags, platforms: m.platforms, dataLoaded: true });
+    });
+    this._onResize = () => this.setState({ isMobile: window.innerWidth < 860 });
+    this._onResize();
+    window.addEventListener('resize', this._onResize);
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this._onResize); }
+
+  setRoute(route, extra) {
+    this.setState(Object.assign({ route, showMobileMenu: false }, extra || {}));
+    window.scrollTo(0, 0);
+  }
+  goHome = (anchor) => (e) => {
+    if (e) e.preventDefault();
+    this.setRoute('home');
+    if (anchor) {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const el = document.getElementById(anchor);
+          if (el) el.scrollIntoView({ behavior: 'auto', block: 'start' });
+          window.location.hash = anchor;
+        });
+      });
+    }
+  };
+  goCatalogo = (tag) => (e) => {
+    if (e) e.preventDefault();
+    this.setRoute('catalogo', tag !== undefined ? { activeTag: tag } : undefined);
+  };
+  goJogo = (id) => (e) => {
+    if (e) e.preventDefault();
+    this.setRoute('jogo', { gameId: id, carouselIndex: 0, expandedChip: null });
+  };
+  goLeituras = (e) => {
+    if (e) e.preventDefault();
+    this.setRoute('leituras');
+  };
+  goVideos = (e) => {
+    if (e) e.preventDefault();
+    this.setRoute('videos');
+  };
+  goFicha = (e) => {
+    if (e) e.preventDefault();
+    this.setRoute('ficha');
+  };
+  goEcaDigital = (e) => {
+    if (e) e.preventDefault();
+    this.setRoute('eca-digital');
+  };
+  toggleMobileMenu = () => this.setState(s => ({ showMobileMenu: !s.showMobileMenu }));
+  toggleMobileFilters = () => this.setState(s => ({ showMobileFilterDrawer: !s.showMobileFilterDrawer }));
+  stopClick = (e) => e.stopPropagation();
+
+  onSearchChange = (e) => this.setState({ search: e.target.value });
+  onFaixaChange = (e) => this.setState({ filterFaixa: e.target.value });
+  onCampoChange = (e) => this.setState({ filterCampo: e.target.value });
+  clearFilters = (e) => { if (e) e.preventDefault(); this.setState({ search: '', filterFaixa: '', filterCampo: '', filterPlataforma: '', activeTag: '' }); };
+  toggleTag = (tag) => () => this.setState(s => ({ activeTag: s.activeTag === tag ? '' : tag }));
+  toggleChip = (code) => () => this.setState(s => ({ expandedChip: s.expandedChip === code ? null : code }));
+
+  prevImage = () => { const len = this.currentImages().length; this.setState(s => ({ carouselIndex: (s.carouselIndex - 1 + len) % len })); };
+  nextImage = () => { const len = this.currentImages().length; this.setState(s => ({ carouselIndex: (s.carouselIndex + 1) % len })); };
+  onCarouselKeyDown = (e) => {
+    if (e.key === 'ArrowLeft') this.prevImage();
+    if (e.key === 'ArrowRight') this.nextImage();
+  };
+  onTouchStart = (e) => { this._touchX = e.touches[0].clientX; };
+  onTouchMove = (e) => { this._touchXMove = e.touches[0].clientX; };
+  onTouchEnd = () => {
+    if (this._touchX != null && this._touchXMove != null) {
+      const dx = this._touchXMove - this._touchX;
+      if (Math.abs(dx) > 40) { dx < 0 ? this.nextImage() : this.prevImage(); }
+    }
+    this._touchX = null; this._touchXMove = null;
+  };
+
+  currentImages() {
+    const g = this.state.games.find(g => g.id === this.state.gameId);
+    return g ? g.imagens : [];
+  }
+
+  bnccDescricao(codigo) {
+    const found = this.state.bncc.find(h => h.codigo === codigo);
+    return found ? found.descricao : 'Descrição em breve.';
+  }
+
+  matchesFilters(g) {
+    const s = this.state;
+    if (s.search && !g.nome.toLowerCase().includes(s.search.toLowerCase()) && !g.tema.toLowerCase().includes(s.search.toLowerCase())) return false;
+    if (s.filterFaixa && g.faixaEtaria !== s.filterFaixa) return false;
+    if (s.filterCampo && !(g.camposDeExperiencia || []).includes(s.filterCampo)) return false;
+    if (s.filterPlataforma && g.plataforma !== s.filterPlataforma) return false;
+    if (s.activeTag && !(g.tags || []).includes(s.activeTag)) return false;
+    return true;
+  }
+
+  renderVals() {
+    const s = this.state;
+    const isDesktop = !s.isMobile;
+    const filteredGames = s.games.filter(g => this.matchesFilters(g)).map(g => ({
+      id: g.id, nome: g.nome, tema: g.tema, plataforma: g.plataforma,
+      faixaLabel: g.faixaEtaria || 'Em breve',
+      showIncomplete: !g.completo,
+      coverSrc: 'images/jogos/' + g.id + '/capa.jpg',
+      onOpen: this.goJogo(g.id)
+    }));
+
+    const faixaOptions = Array.from(new Set(s.games.map(g => g.faixaEtaria).filter(Boolean)));
+    const campoOptions = Array.from(new Set(s.games.flatMap(g => g.camposDeExperiencia || [])));
+
+    const platformOptions = [{ value: '', label: 'Todas' }, ...s.platforms.map(p => ({ value: p, label: p }))].map(p => ({
+      label: p.label, checked: s.filterPlataforma === p.value,
+      onSelect: () => this.setState({ filterPlataforma: p.value })
+    }));
+    const filterTags = s.filterTagsData.map(tag => ({
+      label: tag, activeClass: s.activeTag === tag ? 'idg-chip-active' : '',
+      onClick: this.toggleTag(tag)
+    }));
+
+    const hasActiveFilters = !!(s.search || s.filterFaixa || s.filterCampo || s.filterPlataforma || s.activeTag);
+
+    let selectedGame = null;
+    const gRaw = s.games.find(g => g.id === s.gameId);
+    if (gRaw) {
+      const bnccChips = (gRaw.habilidadesBNCC || []).map(codigo => ({
+        codigo, expanded: s.expandedChip === codigo,
+        tagClass: s.expandedChip === codigo ? 'tag-accent' : 'tag-outline',
+        descricao: this.bnccDescricao(codigo),
+        onToggle: this.toggleChip(codigo)
+      }));
+      selectedGame = {
+        nome: gRaw.nome, tema: gRaw.tema, plataforma: gRaw.plataforma,
+        faixaLabel: gRaw.faixaEtaria || 'Em breve',
+        showIncomplete: !gRaw.completo,
+        descricaoLabel: gRaw.descricao || 'Descrição em breve.',
+        link: gRaw.link || '',
+        direitosDeAprendizagem: gRaw.direitosDeAprendizagem || [],
+        hasDireitos: (gRaw.direitosDeAprendizagem || []).length > 0,
+        noDireitos: (gRaw.direitosDeAprendizagem || []).length === 0,
+        camposDeExperiencia: gRaw.camposDeExperiencia || [],
+        hasCampos: (gRaw.camposDeExperiencia || []).length > 0,
+        noCampos: (gRaw.camposDeExperiencia || []).length === 0,
+        bnccChips, hasBncc: bnccChips.length > 0, noBncc: bnccChips.length === 0,
+        oQueDesenvolve: gRaw.oQueDesenvolve || [],
+        hasDesenvolve: (gRaw.oQueDesenvolve || []).length > 0,
+        noDesenvolve: (gRaw.oQueDesenvolve || []).length === 0,
+        professorLabel: gRaw.comoUtilizarProfessor || 'Em breve',
+        familiaLabel: gRaw.comoUtilizarFamilia || 'Em breve',
+        atividadeLabel: gRaw.atividadeAposJogo || 'Em breve',
+        tempoLabel: gRaw.tempoRecomendado || 'Em breve'
+      };
+    }
+
+    const images = gRaw ? gRaw.imagens : [];
+    const carouselSlides = images.map((src, i) => ({
+      slotId: 'gallery-' + s.gameId + '-' + i,
+      src: src.replace(/^\//, ''),
+      placeholder: 'Imagem ' + (i + 1) + ' de ' + (gRaw ? gRaw.nome : ''),
+      active: i === s.carouselIndex,
+      n: i + 1,
+      dotClass: i === s.carouselIndex ? 'idg-dot-active' : '',
+      onSelect: () => this.setState({ carouselIndex: i })
+    }));
+
+    return {
+      isMobile: s.isMobile, isDesktop, showMobileMenu: s.isMobile && s.showMobileMenu,
+      isHome: s.route === 'home', isCatalogo: s.route === 'catalogo', isJogo: s.route === 'jogo', isLeituras: s.route === 'leituras', isVideos: s.route === 'videos', isFicha: s.route === 'ficha', isEcaDigital: s.route === 'eca-digital',
+      onLogoClick: this.goHome(), onNavSobre: this.goHome('sobre'), onNavTecnologia: this.goHome('tecnologia'),
+      onNavBncc: this.goHome('bncc'), onNavComo: this.goHome('como-utilizar'), onNavMateriais: this.goHome('materiais'),
+      onNavContato: this.goHome('contato'), onNavCatalogo: this.goCatalogo(),
+      toggleMobileMenu: this.toggleMobileMenu, toggleMobileFilters: this.toggleMobileFilters, stopClick: this.stopClick,
+      search: s.search, onSearchChange: this.onSearchChange,
+      filterFaixa: s.filterFaixa, onFaixaChange: this.onFaixaChange,
+      filterCampo: s.filterCampo, onCampoChange: this.onCampoChange,
+      faixaOptions, campoOptions, platformOptions, filterTags,
+      hasActiveFilters, clearFilters: this.clearFilters,
+      showDesktopFilterPanel: isDesktop, showMobileFilterDrawer: s.isMobile && s.showMobileFilterDrawer,
+      filteredGames, resultsCount: filteredGames.length,
+      resultsLabel: filteredGames.length + (filteredGames.length === 1 ? ' jogo encontrado' : ' jogos encontrados'),
+      noResults: s.dataLoaded && filteredGames.length === 0,
+      selectedGame, carouselSlides, showCarouselArrows: carouselSlides.length > 1,
+      prevImage: this.prevImage, nextImage: this.nextImage, onCarouselKeyDown: this.onCarouselKeyDown,
+      onTouchStart: this.onTouchStart, onTouchMove: this.onTouchMove, onTouchEnd: this.onTouchEnd,
+      onNavLeituras: this.goLeituras, onNavVideos: this.goVideos, onNavFicha: this.goFicha, onNavEcaDigital: this.goEcaDigital
+    };
+  }
+}
+
+</script>
+</body>
+</html>
