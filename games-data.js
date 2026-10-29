@@ -53,7 +53,7 @@ export const games = [
     "plataforma": "Aplicativo e Site",
     "faixaEtaria": "4 a 5 anos e 11 meses",
     "gratuito": false,
-    "link": "",
+    "link": "https://logiclike.com/pt-br",
     "descricao": "Plataforma educacional composta por diversos jogos e desafios interativos voltados ao desenvolvimento das habilidades cognitivas de crianças. As atividades abrangem raciocínio lógico, matemática, memória, atenção, percepção visual, linguagem, resolução de problemas e pensamento crítico, de forma lúdica e progressiva.",
     "direitosDeAprendizagem": [
       "Conviver",
@@ -96,7 +96,7 @@ export const games = [
     "plataforma": "Roblox",
     "faixaEtaria": "4 a 5 anos e 11 meses",
     "gratuito": true,
-    "link": "",
+    "link": "https://www.roblox.com/share?code=b1fd45738d4a464a83760ac7c6e5559a&type=ExperienceDetails&stamp=1793313345757",
     "descricao": "Diferentes cores são apresentadas na tela e a criança precisa correr rapidamente e posicionar o personagem sobre a cor indicada. A dinâmica envolve movimento, atenção visual, tomada de decisão e interação com outros jogadores.",
     "direitosDeAprendizagem": [
       "Conviver",
@@ -139,7 +139,7 @@ export const games = [
     "plataforma": "Roblox",
     "faixaEtaria": "3 a 5 anos e 11 meses",
     "gratuito": true,
-    "link": "",
+    "link": "https://www.roblox.com/share?code=9b9a7d6e44b6504db71d75eb90c54cd5&type=ExperienceDetails&stamp=1793313765650",
     "descricao": "Propõe que a criança explore espaços criativos para colorir imagens, desenhar livremente e preencher formas com cores, manifestando escolhas estéticas e pessoais. Possui modo de desenho livre, possibilitando construção de pequenos projetos artísticos em ambiente digital colaborativo.",
     "direitosDeAprendizagem": [
       "Explorar formas de expressão e comunicação visual",
@@ -182,7 +182,7 @@ export const games = [
     "plataforma": "Site",
     "faixaEtaria": "4 a 5 anos e 11 meses",
     "gratuito": true,
-    "link": "",
+    "link": "https://www.escolagames.com.br/jogos/formas-e-desenhos",
     "descricao": "Formas e Desenhos é um jogo interativo que apresenta desenhos com partes faltantes que a criança precisa completar identificando e colocando formas geométricas no lugar correto. A proposta é visual e lúdica, incentivando a criança a reconhecer formas e estruturar desenhos por meio da observação, comparação e encaixe de peças.",
     "direitosDeAprendizagem": [
       "Conviver e participar de situações de exploração conjunta",
@@ -226,7 +226,7 @@ export const games = [
     "plataforma": "Roblox",
     "faixaEtaria": "4 a 5 anos e 11 meses",
     "gratuito": true,
-    "link": "",
+    "link": "https://www.roblox.com/share?code=88d2683ae8477d489ad8219d3c4949a4&type=ExperienceDetails&stamp=1793313453083",
     "descricao": "A criança percorre um trajeto cheio de obstáculos e desafios coloridos, precisando observar, comparar e se movimentar com controle do próprio corpo para avançar até o final do percurso.",
     "direitosDeAprendizagem": [
       "Conviver",
@@ -308,7 +308,7 @@ export const games = [
     "plataforma": "Site",
     "faixaEtaria": "Dos 2 aos 4 anos",
     "gratuito": true,
-    "link": "",
+    "link": "https://kidsonline.com/es/encuentra-el-color/",
     "descricao": "Reconhecer as cores é uma competência de preparação para a escola que as crianças aprendem entre os dois e os três anos. O jogo diz o nome da cor em voz alta e a criança toca no balão, peixe ou fruta certa. Toca no ícone do altifalante a qualquer momento para ouvir de novo. O jogo evolui em dificuldade: começa com 4 cores primárias (vermelho, azul, amarelo, verde), depois avança para 6, 8 e as 10 cores à medida que a confiança cresce, e o nível campeão acrescenta encontrar duas da mesma cor, para um desafio de vários toques.",
     "direitosDeAprendizagem": [
       "Explorar",
@@ -619,10 +619,10 @@ export const games = [
     "id": "adivinhe-o-som",
     "nome": "Adivinhe o Som",
     "tema": "Reconhecimento auditivo de sons do cotidiano e de animais",
-    "plataforma": "Site",
+    "plataforma": "Roblox",
     "faixaEtaria": "3 a 5 anos e 11 meses",
     "gratuito": true,
-    "link": "",
+    "link": "https://www.roblox.com/share?code=70cd47fcc2b7f045a2ae5eecb8afaead&type=ExperienceDetails&stamp=1793314032588",
     "descricao": "Um jogo para adivinhar sons do cotidiano e sons de animais, como o de um despertador, um telefone celular ou um apito. A criança liga os alto-falantes ou coloca os fones de ouvido para descobrir os sons e adivinhar que objeto, o que ou quem está fazendo aquele som específico.",
     "direitosDeAprendizagem": [
       "Explorar",
